@@ -1,33 +1,79 @@
 {% include 'blog/head.html' %}
-{% include 'blog/navbar.html' %}
-<section class = "purple">
+{% include 'blog/post_nav.html' %}
+<section class = "trim">
   <div class = "container header">
     <div class = "row">
       <div class = "col-md-6 p-5 text-white">
-        <h1><br><br><br> Inova/LAB</h1>
+        <br><h1>Inovação <br>& Qualidade</h1><br><br>
         <p class = "flow-text">Conheça os produtos e serviços do Uninta EAD</p>
         <button class = "btn bg-white btn-lg"><i class = "fa fa-user-circle"></i> Conhecer</button>
       </div>
       <div class = "col-md-6 p-5">
         <!-- Another SVG Image  -->
-        <div class = "card shadow-sm">
-          <div class = "card-header">Lucas</div>
+        <!-- Card -->
+        <div class = "card shadow-lg">
+          <div class = "card-header text-primary"><i class = "fa fa-trophy"></i> Inovação</div>
           <div class = "card-body">
-            <p class  = "">Deploy de aplicações em segundos</p>
+            <h3><b>Inovação como palavra de ordem</b></h3>
+            <img src = "https://cms-assets.tutsplus.com/uploads/users/34/posts/27692/preview_image/python.jpg">
+            <p class  = "">InovaLAB e suas tecnologias</p>
+            <!--p class  = "">Veja suas notificações, organize seu fluxo de trabalho</p-->
           </div>
         </div>
+        <!-- Card -->
+        <br>
+        
+        <!--div class = "card shadow-sm">
+            <div class = "card-header text-warning"><i class = "fa fa-grin-beam-sweat"></i> Task</div>
+            <div class = "card-body">
+                    <small class  = ""># Task</small>
+                  <p class  = "">Veja lembretes com ações</p>
+            </div>
+            <div class = "card-footer">
+                <div class ="row">
+                    <div class = "col-md-6">
+                        <a href  ="#">Priorizar</a>
+                    </div>
+                    <div class = "col-md-6">
+                        <a href  ="#">Mover</a>
+                    </div>
+                </div>
+            </div>
+        </div-->
+        <!-- Card -->
       </div>
     </div>
   </div>
 </section>
 <!-- Another section-->
 <section>
+
+    <div class = "col-md-6 p-5">
+    
+        {% for post in posts %}
+
+        <div class = "card shadow-sm mb-5">
+            <div class = "card-header text-primary"><i class = "fa fa-trophy"></i> Inovação</div>
+            <div class = "card-body">
+            <h3><b>    {{ post.title }}</b></h3>
+            <p class  = "">    {{ post.text }} </p>
+            </div>
+        </div>
+        
+        {% endfor %}
+    
+    </div>
+
+</section>
+<!-- Section-->
+<section>
   <div class = "container">
     <div class = "row">
       <div class = "col-md-12 p-5 mb-3">
         <h3>Aquele algo a mais...</h3>
         <br>
-        <p>Tecnolocias suportadas no momento da escrita desta página:</p>
+        <p>A seguir estão listadas tecnolocias que prestamos suporte e temos em nosso portfólio no momento da escrita desta página:</p>
+        <!-- Tabela de ferramentas -->
         <table class = "table table-hover">
           <thead class = "">
             <tr>
@@ -40,15 +86,27 @@
           <tbody>
             <tr>
               <td><i class = "fa fa-check"></i></td>
-              <td>Linux</td>
               <td>Ubuntu</td>
-              <td>LTS</td>
+              <td>18.04 LTS</td>
+              <td>Canonical</td>
             </tr>
             <tr>
               <td><i class = "fa fa-check"></i></td>
               <td>Apache 2</td>
               <td>1.2</td>
               <td>--</td>
+            </tr>
+            <tr>
+                <td><i class = "fa fa-check"></i></td>
+                <td>NginX</td>
+                <td>--</td>
+                <td>NginX</td>
+            </tr>
+            <tr>
+                <td><i class = "fa fa-check"></i></td>
+                <td>Django</td>
+                <td>2.1.7</td>
+                <td>Django</td>
             </tr>
             <tr>
               <td><i class = "fa fa-check"></i></td>
@@ -62,6 +120,12 @@
               <td>5.3.3</td>
               <td>--</td>
             </tr>
+            <tr>
+                <td><i class = "fa fa-check"></i></td>
+                <td>PostgreSQL</td>
+                <td>11</td>
+                <td>PostgreSQL</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -69,10 +133,12 @@
   </div>
 </section>
 <!---->
-<section class  ="bg-dark text-white p-3 mb-3">
+<section class  ="mountain text-white p-3 mb-3">
   <div class = "container">
-    <h3>Entre em contato</h3>
-    <p>This is the official tour</p>
+    <br>
+    <h2>Entre em contato</h2>
+    <p>Faça um tour dentro de nosso portfólio</p>
+    <br><br>
     <div class  = "row">
       <div class = "col-md-3">
         <h1>8+</h1>
@@ -80,13 +146,13 @@
       </div>
 
       <div class = "col-md-3">
-        <h1>10000</h1>
+        <h1>26</h1>
         <p>Parcicipantes</p>
       </div>
 
       <div class = "col-md-3">
         <h1>6</h1>
-        <p>Workshops</p>
+        <p>Desenvolvedores</p>
       </div>
 
       <div class = "col-md-3">
@@ -95,6 +161,7 @@
       </div>
     </div>
   </div>
+  <br><br>
 </section>
 
 <section>
@@ -137,7 +204,7 @@
         <center>
           <h2 class = ""><b>Infraestrutura diferenciada</b></h2>
           <br>
-          <p>Mantemos o serviço escalável por meio de otimizações constantes em um sistema mantido por GIT + Docker +  Kubernets</p>
+          <p>Mantemos o serviço escalável por meio de otimizações constantes em um sistema mantido em nuvem com o que há de mais novo em virtualização e conteinerização    </p>
           <br><br>
         </center>
       </div>
@@ -153,11 +220,11 @@
         <div class = "row">
           
           <div class = "col-md-6 p-2 mb-3">
-            <h3>Linux Based</h3>
+            <h3>Baseado em Linux</h3>
             <br>  
             <i class = "fab fa-3x fa-ubuntu flow-green"></i>        
             <br><br>
-            <p>Lorem ipsum doesn't fit in here, but should. Very interesting concepts</p>
+            <p>Utilizando Ubuntu 18.04 LTS e trabalhando sempre com softwares atualizados</p>
           </div>
 
           <div class = "col-md-6 p-2 mb-3">
@@ -165,7 +232,7 @@
             <br>
             <i class = "fab fa-3x fa-docker flow-green"></i>        
             <br><br>
-            <p>Lorem ipsum doesn't fit in here, but should. Very interesting concepts</p>
+            <p>Sempre prontos para atender a qualquer demanda, 24/7</p>
           </div>
           
           <div class = "col-md-12 p-2 mb-3">
@@ -173,7 +240,7 @@
             <br>
             <i class = "fa fa-3x fa-code-branch flow-green"></i>        
             <br><br>
-            <p>Lorem ipsum doesn't fit in here, but should. Very interesting concepts</p>
+            <p>Inovando sempre com os pés no chão</p>
           </div>
         </div>
       </div>
@@ -234,3 +301,5 @@
     <small>UNINTA 2019. Todos os direitos reservados.</small>
   </center>
 </section>
+
+{% include 'blog/js.html' %}
