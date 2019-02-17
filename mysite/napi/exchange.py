@@ -2,6 +2,7 @@ from django.utils import timezone
 from django.conf import settings
 from django.db import models
 
+
 class Acompanhamento_de_Pressao_Arterial_Glicemia(models.Model):
     #cadastro de titulo
     cliente = models.CharField(max_length=200)
@@ -33,10 +34,12 @@ class Acompanhamento_de_Pressao_Arterial_Glicemia(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     def publish(self):
         self.dia = timezone.now()
-        self.dia = timezone.now()
+        self.hora = timezone.now()
         self.save()
+    
     #######
 
     def __str__(self):
         return self.cliente
 
+class 
