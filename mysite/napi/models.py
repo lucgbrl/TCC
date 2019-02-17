@@ -6,44 +6,43 @@ from django.utils import timezone
 class Prontuario_de_Atendimento_Integral_PAI(models.Model):
 
     numero_registro = models.CharField("Nº de registro", max_length=10)
-    data_de_registro = models.DateTimeField(default=timezone.now)
-    nome = text = models.TextField("Nome") 
-    Data_de_Nascimento = models.DateTimeField("Data de Nascimento"blank=True, null=True) 
-    Idade = models.Interger("Idade")
-    Estado_Civil = models.Text("Estado Civil")
+    data_de_registro = models.DateTimeField(default = timezone.now)
+    #nome_pront = text = models.TextField("Nome") 
+    Data_de_Nascimento = models.DateTimeField("Data de Nascimento", blank=True, null=True) 
+    Idade = models.IntegerField("Idade")
+    Estado_Civil = models.TextField("Estado Civil")
     Nome_da_Mae = models.TextField("Nome da Mãe")
     Nome_do_Pai = models.TextField("Nome do Pai")
-    Profissao = models.Text("Profissão")
-    Naturalidade = models.Text("Naturalidade")
+    Profissao = models.TextField("Profissão")
+    Naturalidade = models.TextField("Naturalidade")
     Endereco = models.TextField("Endereço")
-    Nº = models.Interger("Nº")
-    Bairro = models.Text("Bairro")
-    Cidade = models.Text("Cidade")
-    UF = models.Text("UF")
-    CEP = models.IntergerFild("CEP")
-    Etnia = models.Text("Etnia")
-    Sexo = models.Text("Sexo")
-    RG = models.IntergerFild("RG")
-    CPF = models.IntergerFild("CPF")
-    Cel = models.IntergerFild("Celular")
-    Fixo = models.IntergerFild("Fixo")
-    Email = models.Text("E-mail")
+    Nº = models.IntegerField("Nº")
+    Bairro = models.TextField("Bairro")
+    Cidade = models.TextField("Cidade")
+    UF = models.TextField("UF")
+    CEP = models.IntegerField("CEP")
+    Etnia = models.TextField("Etnia")
+    Sexo = models.TextField("Sexo")
+    RG = models.IntegerField("RG")
+    CPF = models.IntegerField("CPF")
+    Cel = models.IntegerField("Celular")
+    Fixo = models.IntegerField("Fixo")
+    email = models.CharField("E-mail", max_length = 200)
 
     def publish(self):
         self.Data_de_Nascimento = timezone.now()
         self.save()
 
 class Ficha_de_Avaliação_Fisioterapia(models.Model):
-#teste
-#teste
-    Data = models.DateTimeField("Data"default=timezone.now)  
-    Telefone = intergerFild("Telefone"max_length=10)
+
+    Data = models.DateTimeField("Data" , default=timezone.now)  
+    Telefone = models.CharField("Telefone" , max_length=10)
 
     #Dados_Pessoais
-    Nome = models.TextField("Nome")
-    Data_de_Nascimento = models.DateTimeField("Data de Nascimento"blank=True, null=True)
-    Idade = models.Interger("Idade")
-    Responsavel = models.Text("Responsável")
+    nome = models.TextField("Nome")
+    Data_de_Nascimento = models.DateTimeField("Data de Nascimento", blank=True , null=True)
+    Idade = models.IntegerField("Idade")
+    Responsavel = models.TextField("Responsável")
     HDA = models.TextField("HDA")
     HP = models.TextField("HP")
     
@@ -53,12 +52,12 @@ class Ficha_de_Avaliação_Fisioterapia(models.Model):
     ADM = models.TextField("ADM")
 
     #Avaliação Funcional
-    Capacidades_Funcionais models.TextField("Capacidades Funcionais")
-    Aspectos_Sensorias_e_Cognitivos models.TextField("Aspectos Sensoriais e Cognitivos")
-    Limitacoes_Funcionais models.TextField("Limitações Funcionais")
-    Marcador_Funcional models.TextField("Marcador Funcional")
+    Capacidades_Funcionais = models.TextField("Capacidades Funcionais")
+    Aspectos_Sensorias_e_Cognitivos = models.TextField("Aspectos Sensoriais e Cognitivos")
+    Limitacoes_Funcionais = models.TextField("Limitações Funcionais")
+    Marcador_Funcional  = models.TextField("Marcador Funcional")
 
-    Assinatura_do_Profissional = models.Text("Assinatura do Profissional")
+    Assinatura_do_Profissional = models.TextField("Assinatura do Profissional")
 
 
     def publish(self):
