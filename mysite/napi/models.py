@@ -1,10 +1,6 @@
 from django.db import models
 
 # Create your models here.
-#$teste
-#$teste
-
-#$teste
-
-#$teste
-#$teste
+# Classes do projeto
+class PAI(models.Model):
+    cod = models.CharField(max_length=10)
