@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog', #sempre lembrar de adicionar apps aqui dentro
+    'napi',
 ]
 
 MIDDLEWARE = [
