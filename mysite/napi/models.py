@@ -137,13 +137,15 @@ class Ficha_de_Atendimento_Nutricao(models.Model):
      Outros = models.TextField("Outros")
      HPP = models.TextField("HPP")
 
-     Voce_faz_uso_de_algum_medicamento(
+     Voce_faz_uso_de_algum_medicamento = (
          ('SIM','Sim'),
          ('NAO','Não')
      ) 
-     Quais_sao_os_medicamento()
-     Medicaamento = models.CharField("Medicamento"max_length=200)
-     Horario = models.DataTimeFild("Horário"blank=True, null=True)
+     
+     Voce_usa_medicamento = models.CharField(max_lenth = 3, choices = Voce_faz_uso_de_algum_medicamento)
+     
+     Medicamento = models.CharField("Medicamento", max_length=200)
+     Horario = models.DataTimeFild("Horário", blank=True, null=True)
 
      def publish(self):
         self.Data = timezone.now()
