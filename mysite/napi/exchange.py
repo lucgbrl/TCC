@@ -40,4 +40,44 @@ class Acompanhamento_de_Pressao_Arterial_Glicemia(models.Model):
         return self.cliente
 
 class Requisicao_Exame_Citopatologico(models.Model):
+    #basico
+    num_pai = models.CharField(max_length=10)
+    
     nome_completo = models.CharField(max_length=200)
+    Nome_da_Mae = models.TextField("Nome da Mãe")
+    Data_de_Nascimento = models.DateTimeField(default = timezone.now)
+    Idade = models.IntegerField("Idade")
+    
+    #endereço
+    Rua = models.CharField("Endereço", max_length = 200)
+    Nº = models.IntegerField("Nº")
+    Bairro = models.CharField("Bairro", max_length = 200)
+    Cidade = models.CharField("Cidade", max_length = 200 )
+        
+    #contatos
+    Cel = models.IntegerField("Celular")
+    #Fixo = models.IntegerField("Fixo")
+    #email = models.CharField("E-mail", max_length = 200)
+
+    #social
+    RG = models.IntegerField("RG")
+    CPF = models.IntegerField("CPF")
+    
+    ESCOLHA_CONFIRMA = (
+        ('SIM', 'Sim'),
+        ('NAO', 'Não'),
+    )
+
+    Usa_hormonios = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
+    Rastreamento = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
+    Repeticao = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
+    Seguimento = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
+    Ultima_vez_que_papanicolau = models.TextField()
+    
+    Usa_anticoncep = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
+    Usa_Diu = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
+    Esta_gravida = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
+
+    def publish(self):
+        self.Data_de_Nascimento = timezone.now()
+        self.save()
