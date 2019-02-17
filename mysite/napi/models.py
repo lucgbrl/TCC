@@ -6,43 +6,44 @@ from django.utils import timezone
 class Prontuario_de_Atendimento_Integral_PAI(models.Model):
 
     numero_registro = models.CharField("Nº de registro", max_length=10)
-    data_de_registro = models.DateTimeField(default = timezone.now)
-    #nome_pront = text = models.TextField("Nome") 
-    Data_de_Nascimento = models.DateTimeField("Data de Nascimento", blank=True, null=True) 
-    Idade = models.IntegerField("Idade")
-    Estado_Civil = models.TextField("Estado Civil")
+    data_de_registro = models.DateTimeField(default=timezone.now)
+    nome = text = models.TextField("Nome") 
+    Data_de_Nascimento = models.DateTimeField("Data de Nascimento"blank=True, null=True) 
+    Idade = models.Interger("Idade")
+    Estado_Civil = models.Text("Estado Civil")
     Nome_da_Mae = models.TextField("Nome da Mãe")
     Nome_do_Pai = models.TextField("Nome do Pai")
-    Profissao = models.TextField("Profissão")
-    Naturalidade = models.TextField("Naturalidade")
+    Profissao = models.Text("Profissão")
+    Naturalidade = models.Text("Naturalidade")
     Endereco = models.TextField("Endereço")
-    Nº = models.IntegerField("Nº")
-    Bairro = models.TextField("Bairro")
-    Cidade = models.TextField("Cidade")
-    UF = models.TextField("UF")
-    CEP = models.IntegerField("CEP")
-    Etnia = models.TextField("Etnia")
-    Sexo = models.TextField("Sexo")
-    RG = models.IntegerField("RG")
-    CPF = models.IntegerField("CPF")
-    Cel = models.IntegerField("Celular")
-    Fixo = models.IntegerField("Fixo")
-    email = models.CharField("E-mail", max_length = 200)
+    Nº = models.Interger("Nº")
+    Bairro = models.Text("Bairro")
+    Cidade = models.Text("Cidade")
+    UF = models.Text("UF")
+    CEP = models.IntergerFild("CEP")
+    Etnia = models.Text("Etnia")
+    Sexo = models.Text("Sexo")
+    RG = models.IntergerFild("RG")
+    CPF = models.IntergerFild("CPF")
+    Cel = models.IntergerFild("Celular")
+    Fixo = models.IntergerFild("Fixo")
+    Email = models.Text("E-mail")
 
     def publish(self):
         self.Data_de_Nascimento = timezone.now()
         self.save()
 
 class Ficha_de_Avaliação_Fisioterapia(models.Model):
-
-    Data = models.DateTimeField("Data" , default=timezone.now)  
-    Telefone = models.CharField("Telefone" , max_length=10)
+#teste
+#teste
+    Data = models.DateTimeField("Data"default=timezone.now)  
+    Telefone = intergerFild("Telefone"max_length=10)
 
     #Dados_Pessoais
-    nome = models.TextField("Nome")
-    Data_de_Nascimento = models.DateTimeField("Data de Nascimento", blank=True , null=True)
-    Idade = models.IntegerField("Idade")
-    Responsavel = models.TextField("Responsável")
+    Nome = models.TextField("Nome")
+    Data_de_Nascimento = models.DateTimeField("Data de Nascimento"blank=True, null=True)
+    Idade = models.Interger("Idade")
+    Responsavel = models.Text("Responsável")
     HDA = models.TextField("HDA")
     HP = models.TextField("HP")
     
@@ -52,14 +53,102 @@ class Ficha_de_Avaliação_Fisioterapia(models.Model):
     ADM = models.TextField("ADM")
 
     #Avaliação Funcional
-    Capacidades_Funcionais = models.TextField("Capacidades Funcionais")
-    Aspectos_Sensorias_e_Cognitivos = models.TextField("Aspectos Sensoriais e Cognitivos")
-    Limitacoes_Funcionais = models.TextField("Limitações Funcionais")
-    Marcador_Funcional  = models.TextField("Marcador Funcional")
+    Capacidades_Funcionais models.TextField("Capacidades Funcionais")
+    Aspectos_Sensorias_e_Cognitivos models.TextField("Aspectos Sensoriais e Cognitivos")
+    Limitacoes_Funcionais models.TextField("Limitações Funcionais")
+    Marcador_Funcional models.TextField("Marcador Funcional")
 
-    Assinatura_do_Profissional = models.TextField("Assinatura do Profissional")
+    Assinatura_do_Profissional = models.Text("Assinatura do Profissional")
 
 
     def publish(self):
         self.Data_de_Nascimento = timezone.now()
         self.save()
+
+class Avaliacao_Clinica(models.Model):
+
+     Data = models.DateTimeField(default=timezone.now)
+     
+     #Medidas
+     Peso = models.IntergerFild("Peso")
+     Altura = models.IntergerFild("Altura")
+     Tipo_Sanguineo = models.TextField("Tipo_Sanquíneo")
+     P_A = models.IntergerFild("P.A")
+     D_X = models.IntergerFild("D.X")
+     F_R = models.IntergerFild("F.R")
+     Pulso = models.IntergerFild("Pulso")
+     Glicemia = models.IntergerFild("Pulso")
+     IMC = models.IntergerFild("IMC")
+     Perimetro_Cefalico = models.TextField("Perímetro Cefálico")
+
+     #Sampla
+     Sinais_e_Sintomas = models.TextField("Sinais e Sintomas")
+     Alergias = models.TextField("Alergias")
+     Medicacoes = models.TextField("Medicações")
+     Patologias = models.TextField("Patologias")
+     Liquidos = models.TextField("Líquidos")
+     Alimentoacao = models.TextField("Alimentação")
+     Elementos_Relacionados = models.TextField("Elementos Relacionados(Alcool e Outras Drogas")
+     Data = models.DateTimeField("Data"default=timezone.now)
+     Profissional = models.TextField("Profissional") 
+
+      def publish(self):
+        self.Data = timezone.now()
+        self.save()
+
+class Seguimento_Terapeutico(models.Model):
+
+    Seguimento_Terapeutico = models.TextField("Seguimento Terapêutico")
+
+class Ficha_de_Atendimento_Nutricao(models.Model):
+
+     Data = models.DateTimeField("Data de Nascimento"blank=True, null=True) 
+     #1_Identificação
+
+     Nome_Completo = models.TextField("Nome Completo")
+     Data_de_Nascimento = models.DateTimeField("Data de Nascimento"blank=True, null=True) 
+     Idade = models.IntergerFild("Idade")
+     Cidade = models.TextField("Cidade")
+     Email = models.TextField("E-mail")
+
+     Por_que_voce_procurou_o_atendimento_nutricional = models.TextField("Por_que_voce_procurou_o_atendimento_nutricional?")
+
+     Tem_algumas_das_patologias_abaixo()
+
+     Problemas_Cardiacos = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Hipertensao = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Colesterol_elevado = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Convulsoes = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Dor_de_cabeca_frequente = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Constipacao/dias = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Problemas_pulmonares = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Bronquite = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Glicose_elevada = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Fratura_ossea = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Empachamento = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     EH = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Tonturas = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Asma = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Diabetes = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Cirugia = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Azia = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+     Gastrite = models.CharField(max_length=3, choices = ESCOLHA_CONFIRMA)
+
+     Outros = models.TextField("Outros")
+     HPP = models.TextField("HPP")
+
+     Voce_faz_uso_de_algum_medicamento(
+         ('SIM','Sim'),
+         ('NAO','Não')
+     ) 
+     Quais_sao_os_medicamento()
+     Medicaamento = models.CharField("Medicamento"max_length=200)
+     Horario = models.DataTimeFild("Horário"blank=True, null=True)
+
+     def publish(self):
+        self.Data = timezone.now()
+        self.save()
+
+
+
+
