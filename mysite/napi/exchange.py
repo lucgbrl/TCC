@@ -68,15 +68,15 @@ class Requisicao_Exame_Citopatologico(models.Model):
         ('NAO', 'Não'),
     )
 
-    Usa_hormonios = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
-    Rastreamento = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
-    Repeticao = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
-    Seguimento = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
+    Usa_hormonios = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA)
+    Rastreamento = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA)
+    Repeticao = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA)
+    Seguimento = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA)
     Ultima_vez_que_papanicolau = models.TextField()
     
-    Usa_anticoncep = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
-    Usa_Diu = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
-    Esta_gravida = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA, default = null )
+    Usa_anticoncep = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA)
+    Usa_Diu = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA )
+    Esta_gravida = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA )
 
     def publish(self):
         self.Data_de_Nascimento = timezone.now()
