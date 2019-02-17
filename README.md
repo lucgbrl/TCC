@@ -1,2 +1,4 @@
-# TCC
-Projeto de TCC, Graduação em Engenharia da Computação
+# Django/NAPI
+
+
+<h2>Aplicação piloto em Django</h2>
