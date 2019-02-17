@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+<<<<<<< HEAD
 class PAI(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     numero_registro = models.CharField(max_length=10)
@@ -14,3 +15,10 @@ class PAI(models.Model):
 
     def __str__(self):
         return self.title
+=======
+# Classes do projeto
+class PAI(models.Model):
+    cod = models.CharField(max_length=10)
+    desc = models.CharField(max_length=20)
+    
+>>>>>>> equipe1
