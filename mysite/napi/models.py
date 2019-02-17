@@ -9,25 +9,25 @@ class Prontuario_de_Atendimento_Integral_PAI(models.Model):
     data_de_registro = models.DateTimeField(default=timezone.now)
     nome = text = models.TextField("Nome") 
     Data_de_Nascimento = models.DateTimeField("Data de Nascimento"blank=True, null=True) 
-    Idade = models.interger("Idade")
-    Estado_Civil = models.text("Estado Civil")
+    Idade = models.Interger("Idade")
+    Estado_Civil = models.Text("Estado Civil")
     Nome_da_Mae = models.TextField("Nome da Mãe")
     Nome_do_Pai = models.TextField("Nome do Pai")
-    Profissao = models.text("Profissão")
-    Naturalidade = models.text("Naturalidade")
+    Profissao = models.Text("Profissão")
+    Naturalidade = models.Text("Naturalidade")
     Endereco = models.TextField("Endereço")
-    Nº = models.interger("Nº")
-    Bairro = models.text("Bairro")
-    Cidade = models.text("Cidade")
-    UF = models.text("UF")
-    CEP = models.intergerFild("CEP"max_length=8)
-    Etnia = models.text("Etnia")
-    Sexo = models.text("Sexo")
-    RG = intergerFild("RG"max_length=13)
-    CPF = intergerFild("CPF"max_length=12)
-    Cel = intergerFild("Celular"max_length=11)
-    Fixo = intergerFild("Fixo"max_length=10)
-    E-mail = models.text("E-mail")
+    Nº = models.Interger("Nº")
+    Bairro = models.Text("Bairro")
+    Cidade = models.Text("Cidade")
+    UF = models.Text("UF")
+    CEP = models.IntergerFild("CEP")
+    Etnia = models.Text("Etnia")
+    Sexo = models.Text("Sexo")
+    RG = models.IntergerFild("RG")
+    CPF = models.IntergerFild("CPF")
+    Cel = models.IntergerFild("Celular")
+    Fixo = models.IntergerFild("Fixo")
+    Email = models.Text("E-mail")
 
     def publish(self):
         self.Data_de_Nascimento = timezone.now()
@@ -36,5 +36,31 @@ class Prontuario_de_Atendimento_Integral_PAI(models.Model):
 class Ficha_de_Avaliação_Fisioterapia(models.Model):
 #teste
 #teste
-    #teste   
+    Data = models.DateTimeField("Data"default=timezone.now)  
+    Telefone = intergerFild("Telefone"max_length=10)
+
+    #Dados_Pessoais
+    Nome = models.TextField("Nome")
+    Data_de_Nascimento = models.DateTimeField("Data de Nascimento"blank=True, null=True)
+    Idade = models.Interger("Idade")
+    Responsavel = models.Text("Responsável")
+    HDA = models.TextField("HDA")
+    HP = models.TextField("HP")
     
+    #Exame_Físico
+    Inspecao = models.TextField("Inspeção")
+    Palpacao = models.TextField("Palpação")
+    ADM = models.TextField("ADM")
+
+    #Avaliação Funcional
+    Capacidades_Funcionais models.TextField("Capacidades Funcionais")
+    Aspectos_Sensorias_e_Cognitivos models.TextField("Aspectos Sensoriais e Cognitivos")
+    Limitacoes_Funcionais models.TextField("Limitações Funcionais")
+    Marcador_Funcional models.TextField("Marcador Funcional")
+
+    Assinatura_do_Profissional = models.Text("Assinatura do Profissional")
+
+
+    def publish(self):
+        self.Data_de_Nascimento = timezone.now()
+        self.save()
