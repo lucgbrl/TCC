@@ -1,6 +1,16 @@
 from django.db import models
 
 # Create your models here.
-# Classes do projeto
 class PAI(models.Model):
-    cod = models.CharField(max_length=10)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    numero_registro = models.CharField(max_length=10)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.title
