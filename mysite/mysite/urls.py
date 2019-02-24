@@ -13,10 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+#from jet.dashboard.dashboard_modules import google_analytics_views
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
+    #path('admin/', admin.site.urls),
+    #url(r'^', include('blog.urls')),
+    url(r'^', include('blog.urls')),
+    url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
+    url(r'^admin/', admin.site.urls),
 ]
+
+admin.site.site_header = "NAPI Admin"
+admin.site.site_title = "NAPI Admin Portal"
+admin.site.index_title = "NAPI | bem vindo ao Portal"

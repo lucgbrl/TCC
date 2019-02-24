@@ -1,5 +1,6 @@
 {% include 'blog/head.html' %}
 {% include 'blog/post_nav.html' %}
+
 <section class = "trim">
   <div class = "container header">
     <div class = "row">
@@ -11,55 +12,33 @@
       <div class = "col-md-6 p-5">
         <!-- Another SVG Image  -->
         <!-- Card -->
-        <div class = "card shadow-lg">
+        <!--div class = "card shadow-lg">
           <div class = "card-header text-primary"><i class = "fa fa-trophy"></i> Inovação</div>
           <div class = "card-body">
             <h3><b>Inovação como palavra de ordem</b></h3>
-            <img src = "https://cms-assets.tutsplus.com/uploads/users/34/posts/27692/preview_image/python.jpg">
+            <!--img src = "https://cms-assets.tutsplus.com/uploads/users/34/posts/27692/preview_image/python.jpg">
             <p class  = "">InovaLAB e suas tecnologias</p>
-            <!--p class  = "">Veja suas notificações, organize seu fluxo de trabalho</p-->
+            <!--p class  = "">Veja suas notificações, organize seu fluxo de trabalho</p>
           </div>
         </div>
         <!-- Card -->
         <br>
-        
-        <!--div class = "card shadow-sm">
-            <div class = "card-header text-warning"><i class = "fa fa-grin-beam-sweat"></i> Task</div>
-            <div class = "card-body">
-                    <small class  = ""># Task</small>
-                  <p class  = "">Veja lembretes com ações</p>
-            </div>
-            <div class = "card-footer">
-                <div class ="row">
-                    <div class = "col-md-6">
-                        <a href  ="#">Priorizar</a>
-                    </div>
-                    <div class = "col-md-6">
-                        <a href  ="#">Mover</a>
-                    </div>
-                </div>
-            </div>
-        </div-->
-        <!-- Card -->
       </div>
     </div>
   </div>
 </section>
 <!-- Another section-->
-<section>
+<section class = "container">
 
     <div class = "col-md-6 p-5">
-    
         {% for post in posts %}
-
         <div class = "card shadow-sm mb-5">
-            <div class = "card-header text-primary"><i class = "fa fa-trophy"></i> Inovação</div>
             <div class = "card-body">
             <h3><b>    {{ post.title }}</b></h3>
             <p class  = "">    {{ post.text }} </p>
             </div>
         </div>
-        
+
         {% endfor %}
     
     </div>
