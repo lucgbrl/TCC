@@ -5,6 +5,7 @@ from .models import Prontuario_de_Atendimento_Integral_PAI
 
 
 class Acompanhamento_de_Pressao_Arterial_Glicemia(models.Model):
+    num_pai = models.ForeignKey(Prontuario_de_Atendimento_Integral_PAI, on_delete = models.CASCADE)
     #cadastro de titulo
     cliente = models.CharField(max_length=200)
 

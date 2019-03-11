@@ -50,9 +50,19 @@ class Acomp_farmacoterapico(models.Model):
         ('Sim', "Sim"),
         ('Não sabe informar', "Não sabe informar"),
     )
-    alergias = models.BooleanField()
+    
+    #alergias e coisas do tipo
+    #o campo abaixo ativa um input field caso seja assinalado 'sim' para alergias
     alergias_affirm = models.CharField("Alergias", max_length=255, choices = ALERGIAS, blank = True, null = True)
 
+    #comorbidades:
+    diabetes = models.BooleanField("Diabetes", blank = True, null = True, default = False)
+    hipertensao = models.BooleanField("Hipertensão", blank = True, null = True, default = False)
+    outros = models.CharField("Outros", null = True, blank = True, max_length = 255)
+    #motivacao
+    motivacao = models.CharField("Motivo da busca por atendimento", blank = True, null = True, max_length = 255)
+    problema_de_saude = models.TextField("Motivo da busca por atendimento", blank = True, null = True)
+    
     def clean(self):
         if alergias:
             msg = forms.ValidationError("Este campo deve ser preenchido")
@@ -61,7 +71,16 @@ class Acomp_farmacoterapico(models.Model):
             #mantem o banco de dados consistente a partir do erro
             #campo não selecionado
             self.cleaned_data['alergias_affirm'] = ''
+        return self.cleaned_data
 
+    def publish(self):
+        self.data_ini_acomp = timezone.now()
+        self.save()
+
+class Ficha_ava_fisio(models.Model):
+    data_ini_acomp = models.DateField(default=timezone.now())
+    num_pai = models.ForeignKey(Prontuario_de_Atendimento_Integral_PAI, on_delete = models.CASCADE)
+    #lembrar de adicionar responsável
     def publish(self):
         self.data_ini_acomp = timezone.now()
         self.save()
