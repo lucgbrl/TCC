@@ -1,6 +1,7 @@
 from django.utils import timezone
 from django.conf import settings
 from django.db import models
+from .models import Prontuario_de_Atendimento_Integral_PAI
 
 
 class Acompanhamento_de_Pressao_Arterial_Glicemia(models.Model):
@@ -41,11 +42,12 @@ class Acompanhamento_de_Pressao_Arterial_Glicemia(models.Model):
 
 class Requisicao_Exame_Citopatologico(models.Model):
     #basico
-    num_pai = models.CharField(max_length=10)
+    num_pai = models.ForeignKey(Prontuario_de_Atendimento_Integral_PAI, on_delete = models.CASCADE)
     
+    #dados redundantes, já presentes no formulário PAI
     nome_completo = models.CharField(max_length=200)
-    Nome_da_Mae = models.TextField("Nome da Mãe")
-    Data_de_Nascimento = models.DateTimeField(default = timezone.now)
+    Nome_da_Mae = models.CharField("Nome da Mãe", max_length=255)
+    Data_de_Nascimento = models.DateTimeField("Data de nascimento", default = timezone.now)
     Idade = models.IntegerField("Idade")
     
     #endereço
