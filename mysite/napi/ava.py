@@ -119,3 +119,21 @@ class Param_laborais(models.Model):
         self.data4 = timezone.now()
         self.data5 = timezone.now()
         self.save()
+
+class Entrevista_farmaceutica(models.Model):
+    #referencia a Acomp_farmacoterapico
+    referencia = models.ForeignKey(Acomp_farmacoterapico, on_delete = models.CASCADE)
+    medicamento = models.CharField("Medicamento", max_length=255, blank = True, null = True)
+    subs_ativa = models.CharField("Substancia ativa", max_length=255, blank = True, null = True)
+    ps_que_trata = models.CharField("PS que trata", max_length=255, blank = True, null = True)
+    #replicata
+    posologia_usada = models.CharField("Posologia usada", max_length=255, blank = True, null = True)
+    prescritor = models.CharField("Prescritor", max_length=255, blank = True, null = True)
+    data_ultima_prescricao = models.DateField(default = timezone.now, blank = True, null = True)
+    percepcao_da_efetividade = models.TextField("Percepção da efetividade")
+    percepcao_da_seguridade = models.TextField("Percepção da seguridade")
+    #datas
+    data_do_ini = models.DateField("Data de início", default = timezone.now, blank = True, null = True)
+    data_do_fim = models.DateField("Data do fim", default = timezone.now, blank = True, null = True)
+    modo_de_uso = models.CharField("Modo de uso e de administração", max_length=255, blank = True, null = True)
+    observacoes = models.TextField("Observações")
