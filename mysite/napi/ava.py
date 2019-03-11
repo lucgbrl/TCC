@@ -78,9 +78,25 @@ class Acomp_farmacoterapico(models.Model):
         self.save()
 
 class Ficha_ava_fisio(models.Model):
-    data_ini_acomp = models.DateField(default=timezone.now())
+    #chaves estrangeiras devem preceder toda a estrutura da classe 
     num_pai = models.ForeignKey(Prontuario_de_Atendimento_Integral_PAI, on_delete = models.CASCADE)
+    #info basica
+    data_ini_acomp = models.DateField(default=timezone.now())
+    
     #lembrar de adicionar responsável
+    hda = models.TextField("HDA", blank = True, null = True)
+    hp = models.TextField("HP", blank = True, null = True)
+    #exame fisico
+    inspecao = models.TextField("Inspeção", blank = True, null = True)
+    palpacao = models.TextField("Palpação", blank = True, null = True)
+    adm = models.TextField("ADM", blank = True, null = True)
+    #ava funcional
+    ava_func = models.TextField("Capacidades funcionais", blank = True, null = True)
+    asp_sens_cogn = models.TextField("Aspectos sensoriais e cognitivos", blank = True, null = True)
+    lim_func = models.TextField("Limitações funcionais", blank = True, null = True)
+    marcad_func = models.TextField("Marcador funcional", blank = True, null = True)
+
     def publish(self):
         self.data_ini_acomp = timezone.now()
         self.save()
+        

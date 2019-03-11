@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Prontuario_de_Atendimento_Integral_PAI, Seguimento_terapeutico
 from .exchange import Acompanhamento_de_Pressao_Arterial_Glicemia, Requisicao_Exame_Citopatologico
-from .ava import ava_clinica_med_sample, Acomp_farmacoterapico
+from .ava import ava_clinica_med_sample, Acomp_farmacoterapico, Ficha_ava_fisio
 
 # Registrando os models provenientes do arquivo .models aqui
 admin.site.register(Prontuario_de_Atendimento_Integral_PAI)
@@ -16,3 +16,4 @@ admin.site.register(Seguimento_terapeutico)
 
 admin.site.register(ava_clinica_med_sample)
 admin.site.register(Acomp_farmacoterapico)
+admin.site.register(Ficha_ava_fisio)
