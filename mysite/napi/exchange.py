@@ -71,15 +71,26 @@ class Requisicao_Exame_Citopatologico(models.Model):
         ('NAO', 'Não'),
     )
 
-    Usa_hormonios = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA)
+    
     Rastreamento = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA)
     Repeticao = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA)
     Seguimento = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA)
     Ultima_vez_que_papanicolau = models.TextField()
     
-    Usa_anticoncep = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA)
-    Usa_Diu = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA )
-    Esta_gravida = models.CharField(max_length = 3, choices = ESCOLHA_CONFIRMA )
+    Usa_anticoncep = models.BooleanField("Usa anticoncepcional?", default = False)
+    Usa_Diu = models.BooleanField("Usa Diu?", default = False)
+    Esta_gravida = models.BooleanField("Está grávida?", default = False)
+    ultima_menstruacao = models.CharField("Última menstruação", max_length = 64, default = '', blank = True, null = True)
+    sangramento_pos_relacao = models.BooleanField("Tem ou teve sangramento após relação?", default = False)
+    Usa_hormonios = models.BooleanField("Usa hormônio?", default = False)
+
+    #inspeção do colo
+    normal = models.BooleanField("Colo normal?", default = False)
+    anomalia_congen = models.BooleanField("Ausente anomalias congenitas ou retirada cirurgica", default = False)
+    alterado = models.BooleanField("Alterado?", default = False)
+    nao_visualizado = models.BooleanField("Colo não visualizado", null = True, blank = True, default = False)
+
+    data = models.DateField(default = timezone.now, blank = True, null = True)
 
     def publish(self):
         self.Data_de_Nascimento = timezone.now()

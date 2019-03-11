@@ -44,7 +44,7 @@ class ava_clinica_med_sample(models.Model):
 class Acomp_farmacoterapico(models.Model):
     #basico
     num_pai = models.ForeignKey(Prontuario_de_Atendimento_Integral_PAI, on_delete = models.CASCADE)
-    data_ini_acomp = models.DateTimeField(default=timezone.now(), blank = False, null = False)
+    data_ini_acomp = models.DateTimeField(default=timezone.now, blank = False, null = False)
     ALERGIAS = (
         ('Nega', "Nega"),
         ('Sim', "Sim"),
@@ -81,7 +81,7 @@ class Ficha_ava_fisio(models.Model):
     #chaves estrangeiras devem preceder toda a estrutura da classe 
     num_pai = models.ForeignKey(Prontuario_de_Atendimento_Integral_PAI, on_delete = models.CASCADE)
     #info basica
-    data_ini_acomp = models.DateField(default=timezone.now())
+    data_ini_acomp = models.DateField(default=timezone.now(), blank = True, null = True)
     
     #lembrar de adicionar responsável
     hda = models.TextField("HDA", blank = True, null = True)
