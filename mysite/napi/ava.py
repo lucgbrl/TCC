@@ -81,7 +81,7 @@ class Ficha_ava_fisio(models.Model):
     #chaves estrangeiras devem preceder toda a estrutura da classe 
     num_pai = models.ForeignKey(Prontuario_de_Atendimento_Integral_PAI, on_delete = models.CASCADE)
     #info basica
-    data_ini_acomp = models.DateField(default=timezone.now(), blank = True, null = True)
+    data_ini_acomp = models.DateField(default=timezone.now, blank = True, null = True)
     
     #lembrar de adicionar responsável
     hda = models.TextField("HDA", blank = True, null = True)
@@ -100,3 +100,22 @@ class Ficha_ava_fisio(models.Model):
         self.data_ini_acomp = timezone.now()
         self.save()
         
+
+class Param_laborais(models.Model):
+    #referencia a Acomp_farmacoterapico
+    referencia = models.ForeignKey(Acomp_farmacoterapico, on_delete = models.CASCADE)
+    exame = models.CharField("Exames", max_length = 64)
+    valor_de_referencia = models.CharField("Valores de referencia", max_length = 64)
+    data1 = models.DateField(blank=True, null=True)
+    data2 = models.DateField(blank=True, null=True)
+    data3 = models.DateField(blank=True, null=True)
+    data4 = models.DateField(blank=True, null=True)
+    data5 = models.DateField(blank=True, null=True)
+
+    def publish(self):
+        self.data1 = timezone.now()
+        self.data2 = timezone.now()
+        self.data3 = timezone.now()
+        self.data4 = timezone.now()
+        self.data5 = timezone.now()
+        self.save()
