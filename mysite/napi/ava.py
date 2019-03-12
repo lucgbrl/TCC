@@ -50,7 +50,7 @@ class Acomp_farmacoterapico(models.Model):
         ('Sim', "Sim"),
         ('Não sabe informar', "Não sabe informar"),
     )
-    
+
     #alergias e coisas do tipo
     #o campo abaixo ativa um input field caso seja assinalado 'sim' para alergias
     alergias_affirm = models.CharField("Alergias", max_length=255, choices = ALERGIAS, blank = True, null = True)
@@ -62,7 +62,7 @@ class Acomp_farmacoterapico(models.Model):
     #motivacao
     motivacao = models.CharField("Motivo da busca por atendimento", blank = True, null = True, max_length = 255)
     problema_de_saude = models.TextField("Motivo da busca por atendimento", blank = True, null = True)
-    
+
     def clean(self):
         if alergias:
             msg = forms.ValidationError("Este campo deve ser preenchido")
@@ -78,11 +78,11 @@ class Acomp_farmacoterapico(models.Model):
         self.save()
 
 class Ficha_ava_fisio(models.Model):
-    #chaves estrangeiras devem preceder toda a estrutura da classe 
+    #chaves estrangeiras devem preceder toda a estrutura da classe
     num_pai = models.ForeignKey(Prontuario_de_Atendimento_Integral_PAI, on_delete = models.CASCADE)
     #info basica
     data_ini_acomp = models.DateField(default=timezone.now, blank = True, null = True)
-    
+
     #lembrar de adicionar responsável
     hda = models.TextField("HDA", blank = True, null = True)
     hp = models.TextField("HP", blank = True, null = True)
@@ -99,7 +99,7 @@ class Ficha_ava_fisio(models.Model):
     def publish(self):
         self.data_ini_acomp = timezone.now()
         self.save()
-        
+
 
 class Param_laborais(models.Model):
     #referencia a Acomp_farmacoterapico
@@ -120,6 +120,7 @@ class Param_laborais(models.Model):
         self.data5 = timezone.now()
         self.save()
 
+#melhorando formulários
 class Entrevista_farmaceutica(models.Model):
     #referencia a Acomp_farmacoterapico
     referencia = models.ForeignKey(Acomp_farmacoterapico, on_delete = models.CASCADE)
