@@ -4,17 +4,20 @@ from django.utils import timezone
 # Create your models here.
 # Classes do projeto
 class Prontuario_de_Atendimento_Integral_PAI(models.Model):
+    #base
     numero_registro = models.CharField("Nº de registro", max_length=10)
-    data_de_registro = models.DateTimeField(default = timezone.now)
+    data_de_registro = models.DateTimeField(default = timezone.now, blank = False, null = False)
+    #info base
     nome = models.CharField("Nome", max_length = 64)
-    Data_de_Nascimento = models.DateTimeField("Data de Nascimento", blank = True, null = True)
-    Idade = models.CharField("Idade", max_length=2)
-    Estado_Civil = models.CharField("Estado Civil", max_length= 32)
-    Nome_da_Mae = models.CharField("Nome da Mãe",  max_length= 64)
-    Nome_do_Pai = models.CharField("Nome do Pai",  max_length= 64)
-    Profissao = models.CharField("Profissão",  max_length= 32)
-    Naturalidade = models.CharField("Naturalidade",  max_length= 32)
-    Endereco = models.CharField("Endereço",  max_length= 32)
+    data_de_Nascimento = models.DateField("Data de Nascimento", blank = True, null = True)
+    idade = models.IntegerField("Idade")
+    estado_Civil = models.CharField("Estado Civil", max_length= 32)
+    nome_da_Mae = models.CharField("Nome da Mãe",  max_length= 64)
+    nome_do_Pai = models.CharField("Nome do Pai",  max_length= 64)
+    profissao = models.CharField("Profissão",  max_length= 32)
+    naturalidade = models.CharField("Naturalidade",  max_length= 32)
+    #endereco
+    endereco = models.CharField("Endereço",  max_length= 32)
     N = models.IntegerField()
     Bairro = models.CharField("Bairro", max_length=32)
     Cidade = models.CharField("Cidade", max_length=32)
@@ -36,4 +39,3 @@ class Prontuario_de_Atendimento_Integral_PAI(models.Model):
 class Seguimento_terapeutico(models.Model):
     numero_registro = models.ForeignKey(Prontuario_de_Atendimento_Integral_PAI, on_delete=models.CASCADE)
     conteudo = models.TextField()
-    
